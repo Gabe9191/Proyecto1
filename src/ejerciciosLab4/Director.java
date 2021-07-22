@@ -2,7 +2,6 @@ package ejerciciosLab4;
 
 import java.util.Date;
 
-import ejerciciosLab4.PersonaMainV5.TipoDoc;
 
 public class Director  extends Empleado implements IaccionesEmp{
 	
@@ -42,4 +41,11 @@ public class Director  extends Empleado implements IaccionesEmp{
 		// TODO Auto-generated method stub
 		System.out.println("ELIMINADO CON EXITO");
 	}
+
+	
+	
+	
+	
+		
+	
 }

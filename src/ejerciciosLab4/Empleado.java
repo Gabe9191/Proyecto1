@@ -2,7 +2,6 @@ package ejerciciosLab4;
 
 import java.util.Date;
 
-import ejerciciosLab4.PersonaMainV5.TipoDoc;
 
 public abstract class Empleado extends PersonaV5 {
 	

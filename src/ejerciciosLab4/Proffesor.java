@@ -1,10 +1,10 @@
 package ejerciciosLab4;
 
+import java.util.Comparator;
 import java.util.Date;
 
-import ejerciciosLab4.PersonaMainV5.TipoDoc;
 
-public class Proffesor extends Empleado implements IaccionesEmp {
+public class Proffesor extends Empleado implements IaccionesEmp, Comparator<Proffesor>{
 	
 	public 	Proffesor() {
 		super();
@@ -42,6 +42,14 @@ public class Proffesor extends Empleado implements IaccionesEmp {
 	public void eliminar(Empleado emple) {
 		// TODO Auto-generated method stub
 		System.out.println("ELIMINADO CON EXITO");
+	}
+
+	@Override
+	public int compare(Proffesor o1, Proffesor o2) {
+		String ape=o1.getApellido();
+		String ape2=o2.getApellido();
+		
+		return ape.compareTo(ape2);
 	}
 
 

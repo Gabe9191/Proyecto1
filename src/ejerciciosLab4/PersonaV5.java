@@ -1,11 +1,16 @@
 package ejerciciosLab4;
 
+
 import java.util.Date;
 
 import Excepciones.documentoException;
-import ejerciciosLab4.PersonaMainV5.TipoDoc;
 
-public abstract class PersonaV5 {
+
+
+enum TipoDoc{
+	DNI,CEDULA,LIBRETA;
+}
+public abstract class PersonaV5 implements Comparable<PersonaV5> {
 
 
 	private String nombre;
@@ -59,7 +64,7 @@ public abstract class PersonaV5 {
 	}
 
 	public TipoDoc getTipoDoc() {
-		return tipoDoc;
+		return tipoDoc; 
 	}
 	
 	/*public String getTipoDoc() {
@@ -90,7 +95,36 @@ public abstract class PersonaV5 {
 	public void setFechaNac(Date fechaNac) {
 		this.fechaNac = fechaNac;
 	}
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (int) (numDoc ^ (numDoc >>> 32));
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PersonaV5 other = (PersonaV5) obj;
+		if (numDoc != other.numDoc)
+			return false;
+		return true;
+	}
 	
+	public int compareTo(PersonaV5 arg) {
+		
+		return this.apellido.compareTo(arg.getApellido());
+		
+	}
 	
 	
 }

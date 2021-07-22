@@ -4,17 +4,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.LinkedList;
 import java.util.TimeZone;
+import java.util.TreeSet;
 
 import javax.swing.JOptionPane;
 
 import Excepciones.documentoException;
-import ejerciciosLab4.Enums.TipoDoc;
 
 public class PersonaMainV5 {
-	public enum TipoDoc{
-		DNI,CEDULA,LIBRETA;
-	}
+	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -31,6 +30,9 @@ public class PersonaMainV5 {
 		String curso;
 		int decision;
 		TipoDoc Tdoc = null;
+		
+		TreeSet<PersonaV5> personas= new TreeSet<PersonaV5>();
+		
 		
 		
 		do {
@@ -68,8 +70,10 @@ public class PersonaMainV5 {
 		}
 		
 		alumno=new Alumno(nombre,apellido,Tdoc,n,fechaNac,fechaIng,cursos);
+		personas.add(alumno);
 		JOptionPane.showMessageDialog(null,alumno.toString());
-		alumno.guardar(alumno);
+		
+		alumno.CrearAlumno(alumno);
 
 		break;
 		case 2: JOptionPane.showMessageDialog(null,"Ingrese los datos del Profesor");
@@ -93,7 +97,10 @@ public class PersonaMainV5 {
 		fechaCargo=conversiones.ConvertirStringEnDate(sfechaCargo);
 		sueldo=Float.parseFloat(JOptionPane.showInputDialog("Ingrese sueldo"));
 		profesor=new Proffesor(nombre,apellido,Tdoc,numDoc,fechaNac,fechaCargo,sueldo);
+		
+		personas.add(profesor);
 		JOptionPane.showMessageDialog(null,profesor.toString());
+		
 		profesor.guardar(profesor);
 		break;
 		case 3:JOptionPane.showMessageDialog(null,"Ingrese los datos del Director");
@@ -116,7 +123,9 @@ public class PersonaMainV5 {
 		sfechaCargo=JOptionPane.showInputDialog("Ingrese fecha de ingreso");
 		fechaCargo=conversiones.ConvertirStringEnDate(sfechaCargo);
 		sueldo=Float.parseFloat(JOptionPane.showInputDialog("Ingrese sueldo"));
+		
 		director=new Director(nombre,apellido,Tdoc,numDoc,fechaNac,fechaCargo,sueldo);
+		personas.add(director);
 		JOptionPane.showMessageDialog(null,director.toString());
 		director.guardar(director);
 		break;
@@ -131,6 +140,14 @@ public class PersonaMainV5 {
 		
 		}
         while(decision!=1&& decision!=2);
+		
+		
+		for(PersonaV5 per:personas) {
+			
+			System.out.println(per);
+		}
+		
+		
 		
 		
 		
